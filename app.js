@@ -9,6 +9,14 @@ var hashtag = require('./routes/hashtag');
 var index = require('./routes/index');
 //database setup
 var mongoose = require('mongoose');
+var ig = require('instagram-node-lib');
+var dotenv = require('dotenv');
+dotenv.load();
+ig.set('instagram_client_id', process.env.instagram_client_id);
+ig.set('instagram_client_secret', process.env.instagram_client_secret);
+
+exports.ig = ig;
+
 mongoose.connect(process.env.MONGOHQ_URL || 'mongodb://localhost/instagramexample');
 
 //Configures the Template engine
